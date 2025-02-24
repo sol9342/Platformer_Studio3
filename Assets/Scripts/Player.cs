@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    private void MovePlayer(Vector3 direction)
+    public void MovePlayer(Vector3 direction)
     {
         Vector3 moveDirection = new(direction.x, 0f, direction.z);
         rb.AddForce(speed * moveDirection);
