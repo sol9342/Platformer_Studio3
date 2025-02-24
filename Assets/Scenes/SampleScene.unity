@@ -894,7 +894,7 @@ MonoBehaviour:
   HorizontalAxis:
     Value: 0
     Center: 0
-    Range: {x: -90, y: 90}
+    Range: {x: -180, y: 180}
     Wrap: 0
     Recentering:
       Enabled: 0
@@ -1099,6 +1099,7 @@ GameObject:
   - component: {fileID: 695280350}
   - component: {fileID: 695280349}
   - component: {fileID: 695280352}
+  - component: {fileID: 695280353}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1186,6 +1187,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputManager: {fileID: 1574287169}
   speed: 10
+--- !u!114 &695280353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695280348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e027a49b616bdae40aa9c7cf376d06d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  freeLookCamera: {fileID: 450028926}
 --- !u!1 &703377514
 GameObject:
   m_ObjectHideFlags: 0
@@ -1935,6 +1949,7 @@ MonoBehaviour:
   OnMove:
     m_PersistentCalls:
       m_Calls: []
+  forwardMovement: {fileID: 450028927}
 --- !u!4 &1574287170
 Transform:
   m_ObjectHideFlags: 0

@@ -8,6 +8,5 @@ public class ForwardMovement : MonoBehaviour
     {
         transform.forward = freeLookCamera.transform.forward;
         transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
-        
     }
 }
