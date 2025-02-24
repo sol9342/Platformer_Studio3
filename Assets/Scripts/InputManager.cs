@@ -37,8 +37,6 @@ public class InputManager : MonoBehaviour
         if(Input.GetKey(KeyCode.Space))
         {
             jump += Vector3.up;
-            //OnJump?.Invoke(jump);
-            //isTouching = false;
         }
         
         OnMove?.Invoke(input);

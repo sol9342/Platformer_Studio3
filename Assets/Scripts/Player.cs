@@ -33,12 +33,14 @@ public class Player : MonoBehaviour
 
     void OnCollisionExit(Collision other)
     {
+        /*
         if(other.gameObject.CompareTag("Ground"))
         {
             isTouching = false;
         }
+        */
+        isTouching = false;
     }
-
 
     public void MovePlayer(Vector3 direction)
     {
@@ -50,7 +52,13 @@ public class Player : MonoBehaviour
     {
         if(isTouching)
         {
+            //rb.linearVelocity = Vector3.zero;
+            
             rb.AddForce(dir * jumpSpeed, ForceMode.Impulse);
+            
+            //isTouching = false;
+            //rb.linearVelocity = new Vector3(0, jumpSpeed, 0);
+           // rb.linearVelocity.y = dir*jumpSpeed; 
             //isTouching = false;
         }
     }
