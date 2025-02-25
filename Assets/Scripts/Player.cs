@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
 
         if(other.gameObject.CompareTag("Coin"))
         {
+            Debug.Log("coin collided with");
             Destroy(other.gameObject);
             points++;
             scoreText.text = "Score: " + points;
@@ -45,7 +46,6 @@ public class Player : MonoBehaviour
         {
             isTouching = false;
         } 
-       //isTouching = false;
     }
 
     void Update()
@@ -68,9 +68,6 @@ public class Player : MonoBehaviour
     {
         if(isTouching)
         {
-            //rb.linearVelocity = Vector3.zero;
-           // rb.AddForce(dir * jumpSpeed, ForceMode.Impulse);
-            
             rb.linearVelocity = new Vector3(0, jumpSpeed, 0);
             rb.linearVelocity = dir*jumpSpeed; 
         }

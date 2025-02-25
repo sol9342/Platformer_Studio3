@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1478000545724959697}
   - component: {fileID: -8137471311299634841}
+  - component: {fileID: -3680574466969689910}
+  - component: {fileID: 6553057132314882506}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Coin
@@ -46,7 +48,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 0
-  scoreValue: 1
+--- !u!65 &-3680574466969689910
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495508422521315272}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.75669384, y: 0.2519741, z: 0.8007164}
+  m_Center: {x: -0.0026640892, y: 0.001578331, z: 0.0055589676}
+--- !u!54 &6553057132314882506
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495508422521315272}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &4034431599199356838
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -98,6 +147,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: b3619cde5e99b3d4f961036db6bef44e, type: 3}
       propertyPath: m_Name
       value: CoinObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b3619cde5e99b3d4f961036db6bef44e, type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

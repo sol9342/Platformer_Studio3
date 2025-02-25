@@ -1477,6 +1477,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4268365693976492791, guid: 798ea44ecc518e64fa6fa71427ccc485, type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3414,6 +3418,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin
       objectReference: {fileID: 0}
+    - target: {fileID: 4268365693976492791, guid: 798ea44ecc518e64fa6fa71427ccc485, type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3798,7 +3806,6 @@ Transform:
   - {fileID: 1189215662}
   - {fileID: 265839325}
   - {fileID: 961819930}
-  - {fileID: 473864947}
   - {fileID: 955846246}
   - {fileID: 1680495126}
   - {fileID: 488053520}
@@ -3807,6 +3814,7 @@ Transform:
   - {fileID: 1957805751}
   - {fileID: 1703885856}
   - {fileID: 1459089814}
+  - {fileID: 473864947}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1922696750
