@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Cinemachine;
+using TMPro;
 
 public class Player : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpSpeed;
     private Rigidbody rb;
     private bool isTouching;
+    private int points;
+    public TextMeshProUGUI scoreText;
 
     void Start()
     {
@@ -18,6 +21,7 @@ public class Player : MonoBehaviour
         inputManager.OnJump.AddListener(JumpPlayer);
         rb = GetComponent<Rigidbody>();
         moveSpeedOriginal = moveSpeed;
+        points = 0;
     }
     void OnCollisionEnter(Collision other)
     {
@@ -25,16 +29,23 @@ public class Player : MonoBehaviour
         {
             isTouching = true;
         }
+
+        if(other.gameObject.CompareTag("Coin"))
+        {
+            Destroy(other.gameObject);
+            points++;
+            scoreText.text = "Score: " + points;
+        }
     }
 
     void OnCollisionExit(Collision other)
     {
-        /*
+        
         if(other.gameObject.CompareTag("Ground"))
         {
             isTouching = false;
-        } */
-       isTouching = false;
+        } 
+       //isTouching = false;
     }
 
     void Update()

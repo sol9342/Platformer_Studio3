@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -8137471311299634841}
   m_Layer: 0
   m_Name: Coin
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 0
+  scoreValue: 1
 --- !u!1001 &4034431599199356838
 PrefabInstance:
   m_ObjectHideFlags: 0
