@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private InputManager inputManager;
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float moveSpeedOriginal;
     [SerializeField] private float jumpSpeed;
     private Rigidbody rb;
     private bool isTouching;
@@ -16,13 +17,8 @@ public class Player : MonoBehaviour
         inputManager.OnMove.AddListener(MovePlayer);
         inputManager.OnJump.AddListener(JumpPlayer);
         rb = GetComponent<Rigidbody>();
+        moveSpeedOriginal = moveSpeed;
     }
-/*
-    private void OnCollisionStay()
-    {
-        isTouching = true;
-    }
-    */
     void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.CompareTag("Ground"))
@@ -37,9 +33,18 @@ public class Player : MonoBehaviour
         if(other.gameObject.CompareTag("Ground"))
         {
             isTouching = false;
+        } */
+       isTouching = false;
+    }
+
+    void Update()
+    {
+        if(!isTouching)
+        {
+            moveSpeed = moveSpeedOriginal / 15;
+        }else{
+            moveSpeed = moveSpeedOriginal;
         }
-        */
-        isTouching = false;
     }
 
     public void MovePlayer(Vector3 direction)
@@ -53,13 +58,10 @@ public class Player : MonoBehaviour
         if(isTouching)
         {
             //rb.linearVelocity = Vector3.zero;
+           // rb.AddForce(dir * jumpSpeed, ForceMode.Impulse);
             
-            rb.AddForce(dir * jumpSpeed, ForceMode.Impulse);
-            
-            //isTouching = false;
-            //rb.linearVelocity = new Vector3(0, jumpSpeed, 0);
-           // rb.linearVelocity.y = dir*jumpSpeed; 
-            //isTouching = false;
+            rb.linearVelocity = new Vector3(0, jumpSpeed, 0);
+            rb.linearVelocity = dir*jumpSpeed; 
         }
     }
 
