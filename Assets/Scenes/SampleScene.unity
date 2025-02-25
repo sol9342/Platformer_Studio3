@@ -1887,7 +1887,8 @@ MonoBehaviour:
   moveSpeed: 50
   moveSpeedOriginal: 0
   jumpSpeed: 5
-  scoreText: {fileID: 1125791247}
+  isTouching: 0
+  jumpsLeft: 0
 --- !u!114 &695280353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3442,6 +3443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1574287170}
   - component: {fileID: 1574287169}
+  - component: {fileID: 1574287171}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3507,6 +3509,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1574287171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574287168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5a2e1da5e08cf41aca7f2b7874f9bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 1125791247}
 --- !u!1001 &1680495125
 PrefabInstance:
   m_ObjectHideFlags: 0

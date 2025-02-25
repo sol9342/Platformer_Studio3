@@ -11,40 +11,36 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeedOriginal;
     [SerializeField] private float jumpSpeed;
     private Rigidbody rb;
-    private bool isTouching;
-    private int points;
-    public TextMeshProUGUI scoreText;
+    [SerializeField] private bool isTouching;
+    public int jumpsLeft;
 
     void Start()
     {
         inputManager.OnMove.AddListener(MovePlayer);
         inputManager.OnJump.AddListener(JumpPlayer);
         rb = GetComponent<Rigidbody>();
+        
         moveSpeedOriginal = moveSpeed;
-        points = 0;
+        //jumpsLeft = 2;
     }
     void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.CompareTag("Ground"))
         {
             isTouching = true;
-        }
-
-        if(other.gameObject.CompareTag("Coin"))
-        {
-            Debug.Log("coin collided with");
-            Destroy(other.gameObject);
-            points++;
-            scoreText.text = "Score: " + points;
+            Debug.Log("colliding with ground");
+            //jumpsLeft = 2;
         }
     }
 
     void OnCollisionExit(Collision other)
     {
-        
         if(other.gameObject.CompareTag("Ground"))
         {
+            jumpsLeft = 1;
             isTouching = false;
+            Debug.Log("Leaving ground");
+            //jumpsLeft = 1;
         } 
     }
 
@@ -66,10 +62,12 @@ public class Player : MonoBehaviour
 
     public void JumpPlayer(Vector3 dir)
     {
-        if(isTouching)
+        //Debug.Log("jumps left: "+jumpsLeft);
+        if(isTouching || jumpsLeft==1)
         {
             rb.linearVelocity = new Vector3(0, jumpSpeed, 0);
             rb.linearVelocity = dir*jumpSpeed; 
+            jumpsLeft = 0;
         }
     }
 
