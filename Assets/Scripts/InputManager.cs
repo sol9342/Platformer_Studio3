@@ -8,19 +8,14 @@ public class InputManager : MonoBehaviour
 {
     public UnityEvent<Vector3> OnMove = new UnityEvent<Vector3>();
     public UnityEvent<Vector3> OnJump = new UnityEvent<Vector3>();
-    [SerializeField] private Transform forwardMovement;
-    //private bool isTouching;
-/*
-    private void OnCollisionStay()
-    {
-        isTouching = true;
-    }
-    */
+    public UnityEvent<Vector3> OnDash = new UnityEvent<Vector3>();
+    [SerializeField] private Transform forwardMovement; 
 
     void Update()
     {
         Vector3 input = Vector3.zero;
         Vector3 jump = Vector3.zero;
+        Vector3 dash = Vector3.zero;
         
         if(Input.GetKey(KeyCode.W))
         {
@@ -38,8 +33,13 @@ public class InputManager : MonoBehaviour
         {
             jump += Vector3.up;
         }
+        if(Input.GetKey(KeyCode.Q)) 
+        {
+            dash += forwardMovement.forward;
+        }
         
         OnMove?.Invoke(input);
         OnJump?.Invoke(jump);
+        OnDash?.Invoke(dash);
     }
 }

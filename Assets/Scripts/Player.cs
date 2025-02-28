@@ -11,14 +11,15 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeedOriginal;
     [SerializeField] private float jumpSpeed;
     private Rigidbody rb;
-    [SerializeField] private bool isTouching;
-    [SerializeField] private bool canDoubleJump;
+    private bool isTouching;
+    private bool canDoubleJump;
     //public int jumpsLeft;
 
     void Start()
     {
         inputManager.OnMove.AddListener(MovePlayer);
         inputManager.OnJump.AddListener(JumpPlayer);
+        inputManager.OnDash.AddListener(DashInAir);
         rb = GetComponent<Rigidbody>();
         
         moveSpeedOriginal = moveSpeed;
@@ -53,6 +54,15 @@ public class Player : MonoBehaviour
     {
         Vector3 moveDirection = new(direction.x, 0f, direction.z);
         rb.AddForce(moveSpeed * moveDirection);
+    }
+
+    public void DashInAir(Vector3 direction)
+    {
+        if(!isTouching)
+        {
+            Vector3 moveDirection = new(direction.x, 0f, direction.z);
+            rb.AddForce(moveSpeedOriginal * moveDirection);
+        }
     }
 
     public void JumpPlayer(Vector3 dir)
