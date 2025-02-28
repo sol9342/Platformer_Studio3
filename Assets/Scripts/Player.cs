@@ -12,7 +12,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float jumpSpeed;
     private Rigidbody rb;
     [SerializeField] private bool isTouching;
-    public int jumpsLeft;
+    [SerializeField] private bool canDoubleJump;
+    //public int jumpsLeft;
 
     void Start()
     {
@@ -21,15 +22,12 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         
         moveSpeedOriginal = moveSpeed;
-        //jumpsLeft = 2;
     }
     void OnCollisionEnter(Collision other)
     {
         if(other.gameObject.CompareTag("Ground"))
         {
             isTouching = true;
-            Debug.Log("colliding with ground");
-            //jumpsLeft = 2;
         }
     }
 
@@ -37,10 +35,7 @@ public class Player : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Ground"))
         {
-            jumpsLeft = 1;
             isTouching = false;
-            Debug.Log("Leaving ground");
-            //jumpsLeft = 1;
         } 
     }
 
@@ -63,11 +58,16 @@ public class Player : MonoBehaviour
     public void JumpPlayer(Vector3 dir)
     {
         //Debug.Log("jumps left: "+jumpsLeft);
-        if(isTouching || jumpsLeft==1)
+        if(isTouching)
         {
-            rb.linearVelocity = new Vector3(0, jumpSpeed, 0);
             rb.linearVelocity = dir*jumpSpeed; 
-            jumpsLeft = 0;
+            canDoubleJump = true;
+        }else{
+            if(Input.GetKeyDown(KeyCode.Space) && canDoubleJump)
+            {
+                canDoubleJump = false;
+                rb.linearVelocity = dir*jumpSpeed; 
+            }
         }
     }
 
