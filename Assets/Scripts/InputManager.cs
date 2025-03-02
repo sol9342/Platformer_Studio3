@@ -33,7 +33,7 @@ public class InputManager : MonoBehaviour
         {
             jump += Vector3.up;
         }
-        if(Input.GetKey(KeyCode.Q)) 
+        if(Input.GetKeyDown(KeyCode.Q)) 
         {
             dash += forwardMovement.forward;
         }

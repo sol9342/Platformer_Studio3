@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Cinemachine;
 using TMPro;
+using UnityEngine.Scripting.APIUpdating;
 
 public class Player : MonoBehaviour
 {
@@ -10,10 +11,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float moveSpeedOriginal;
     [SerializeField] private float jumpSpeed;
+    [SerializeField] private float dashSpeed;
     private Rigidbody rb;
     private bool isTouching;
     private bool canDoubleJump;
-    //public int jumpsLeft;
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         
         moveSpeedOriginal = moveSpeed;
+        dashSpeed = moveSpeed * 10;
     }
     void OnCollisionEnter(Collision other)
     {
@@ -44,7 +46,7 @@ public class Player : MonoBehaviour
     {
         if(!isTouching)
         {
-            moveSpeed = moveSpeedOriginal / 15;
+            moveSpeed = moveSpeedOriginal / 30;
         }else{
             moveSpeed = moveSpeedOriginal;
         }
@@ -53,15 +55,19 @@ public class Player : MonoBehaviour
     public void MovePlayer(Vector3 direction)
     {
         Vector3 moveDirection = new(direction.x, 0f, direction.z);
-        rb.AddForce(moveSpeed * moveDirection);
+        rb.AddForce(moveSpeed * moveDirection, ForceMode.Impulse);
+        //rb.linearVelocity = moveDirection*moveSpeed;
     }
 
     public void DashInAir(Vector3 direction)
     {
         if(!isTouching)
         {
+            //Debug.Log(direction);
             Vector3 moveDirection = new(direction.x, 0f, direction.z);
-            rb.AddForce(moveSpeedOriginal * moveDirection);
+            rb.AddForce(dashSpeed * moveDirection, ForceMode.Impulse);
+            //rb.transform.Translate(Vector3.forward * 1f * Time.deltaTime);
+            //rb.linearVelocity = dashSpeed * moveDirection;
         }
     }
 
