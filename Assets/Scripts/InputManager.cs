@@ -9,7 +9,12 @@ public class InputManager : MonoBehaviour
     public UnityEvent<Vector3> OnMove = new UnityEvent<Vector3>();
     public UnityEvent<Vector3> OnJump = new UnityEvent<Vector3>();
     public UnityEvent<Vector3> OnDash = new UnityEvent<Vector3>();
-    [SerializeField] private Transform forwardMovement; 
+    [SerializeField] private Transform forwardMovement;
+
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;   
+    }
 
     void Update()
     {
